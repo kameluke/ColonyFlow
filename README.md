@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ColonyFlow - マウスコロニー管理システム
 
-## Getting Started
+ColonyFlow（コロニーフロー）は、研究現場におけるマウス飼育・交配・系統管理を効率化するための Apple 風モダン UI を採用した管理システムです。
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 プラットフォーム構成
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+本リポジトリには以下の3つの形式が用意されています：
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Web版（ルートディレクトリ）**
+   - ローカルの Node.js サーバーで動作するブラウザ版
+   - 起動コマンド: `npm run dev`
+2. **Mac デスクトップアプリ版（`desktop-app/`）**
+   - Electron ベースのスタンドアロン Mac アプリ（.app / .dmg）
+   - 書類フォルダ（`~/Documents/ColonyFlow/`）にデータを安全に自動保存
+   - 詳細は `desktop-app/ColonyFlow_配布用_インストール手順と注意事項.md` を参照
+3. **iPad 単体アプリ版（`ipad-app/`）**
+   - Capacitor + Next.js (Static Export) によるネイティブ iPadOS アプリ
+   - Mac との常時接続や外部サーバー不要、**iPad 単体でオフライン動作**
+   - Xcode を使って手元の iPad に無料で直接インストール可能
+   - 詳細は [iPad_Install_Guide.md](./iPad_Install_Guide.md) を参照
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📱 iPad へのインストール方法（概要）
 
-To learn more about Next.js, take a look at the following resources:
+Mac に無料の **Xcode**（App Store から入手可能）をインストールし、以下の手順で手元の iPad 実機に転送できます：
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. `ipad-app/ios/App/App.xcodeproj` を Xcode で開く
+2. 無料の Apple ID で署名（Signing）を設定
+3. iPad をケーブル接続し、Xcode 上部の再生ボタン（▶）を押すだけで iPad にインストール完了
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+詳しいステップ・バイ・ステップの手順は [iPad_Install_Guide.md](./iPad_Install_Guide.md) をご覧ください。
