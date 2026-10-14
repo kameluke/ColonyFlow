@@ -79,12 +79,12 @@ export default function Home() {
 
   // Print the current screen as displayed: scale it to fit the A4 landscape page
   useEffect(() => {
-    // Dashboard prints on A4 portrait, other screens on A4 landscape (printable size at 96dpi, 8mm margins)
-    const portrait = activeTab === 'home';
+    // Dashboard / Pedigree print on A4 portrait, other screens on A4 landscape (printable size at 96dpi, 8mm margins)
+    const portrait = activeTab === 'home' || activeTab === 'tracking';
     const PAGE_W = portrait ? 730 : 1060;
-    const PAGE_H = portrait ? 1065 : 730;
+    const PAGE_H = portrait ? 1050 : 715; // minus room for the footer stamp
     let pageStyle = null;
-    const fitOnePage = activeTab === 'home' || activeTab === 'cages' || activeTab === 'timeline';
+    const fitOnePage = ['home', 'cages', 'timeline', 'tracking'].includes(activeTab);
     let fixed = [];
     const beforePrint = () => {
       if (document.querySelector('.print-preview-scroll')) return; // label printing has its own layout
@@ -96,8 +96,10 @@ export default function Home() {
         el.style.height = el.offsetHeight + 'px';
         return prev;
       });
+      const stamp = document.querySelector('.print-stamp');
+      if (stamp) stamp.textContent = `Printed: ${new Date().toLocaleString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })}`;
       pageStyle = document.createElement('style');
-      pageStyle.textContent = `@page { size: A4 ${portrait ? 'portrait' : 'landscape'}; margin: 8mm; }`;
+      pageStyle.textContent = `@page { size: A4 ${portrait ? 'portrait' : 'landscape'}; margin: 8mm 8mm 12mm; }`;
       document.head.appendChild(pageStyle);
       document.body.style.width = w + 'px';
       if (window.innerWidth > 1024) document.body.setAttribute('data-print-wide', '');
@@ -105,9 +107,12 @@ export default function Home() {
       let zoom = Math.min(1, PAGE_W / w);
       if (fitOnePage) zoom = Math.min(zoom, PAGE_H / h);
       document.body.style.zoom = String(zoom);
+      if (stamp) stamp.style.zoom = String(1 / zoom); // keep the stamp at a constant size
     };
     const afterPrint = () => {
       document.body.style.zoom = '';
+      const stampEl = document.querySelector('.print-stamp');
+      if (stampEl) stampEl.style.zoom = '';
       pageStyle?.remove();
       pageStyle = null;
       document.body.style.width = '';
@@ -606,6 +611,7 @@ export default function Home() {
   };
   return (
     <main style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%' }}>
+      <div className="print-stamp" />
       <header>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <PupAnimalIcon size={56} style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }} />
@@ -1771,7 +1777,7 @@ export default function Home() {
                     <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>2026-10-14</span>
                 </div>
                 <ul style={{ fontSize: '0.9rem', lineHeight: '1.6', paddingLeft: '1.2rem', margin: 0 }}>
-                    <li><strong>Print / Save as PDF:</strong> New Print button in the header (File menu / Cmd+P in the desktop app) prints the current screen with its on-screen design and layout. Dashboard fits one A4 portrait page, Location and Timeline fit one A4 landscape page, and Timeline prints the range currently displayed.</li>
+                    <li><strong>Print / Save as PDF:</strong> New Print button in the header (File menu / Cmd+P in the desktop app) prints the current screen with its on-screen design and layout. Dashboard and Pedigree fit one A4 portrait page, Location and Timeline fit one A4 landscape page, and Timeline prints the range currently displayed. A print timestamp is added to the bottom-right of every page.</li>
                 </ul>
               </section>
 

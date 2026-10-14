@@ -16,6 +16,9 @@ All notable changes to **ColonyFlow** will be documented in this file.
    - **Timeline** は、画面で表示している範囲（スクロール位置）のまま印刷されます。
    - Dashboard は画面と同じ2列レイアウト（カレンダー＋Active Tasks）で印刷されます。
    - ヘッダー周りの灰色の枠など、画面専用の装飾（影・ぼかし）は印刷時に除去します。
+   - **Pedigree** も A4 縦の1枚に収めて印刷します。
+   - **印刷日時**（Printed: YYYY/MM/DD HH:MM）を、全ページの右下に自動で入れます。
+   - Mice / Cages など長い表で、1ページ目が空白になる問題を修正しました（表が1ページ目から始まり、複数ページに続きます）。
 
 ---
 
@@ -29,6 +32,9 @@ All notable changes to **ColonyFlow** will be documented in this file.
    - **Timeline** prints exactly the range currently shown on screen (scroll position preserved).
    - Dashboard keeps the on-screen two-column layout (Calendar + Active Tasks).
    - Screen-only effects (shadows, blur) are removed when printing to avoid grey boxes around the header.
+   - **Pedigree** is also fit onto a single A4 portrait page.
+   - A **print timestamp** ("Printed: YYYY/MM/DD HH:MM") is automatically added at the bottom-right of every page.
+   - Fixed a bug where long tables (Mice / Cages) left the first page blank; tables now start on page 1 and continue across pages.
 
 ---
 
