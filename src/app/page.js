@@ -84,10 +84,22 @@ export default function Home() {
     const PAGE_W = portrait ? 730 : 1060;
     const PAGE_H = portrait ? 1050 : 715; // minus room for the footer stamp
     let pageStyle = null;
-    const fitOnePage = ['home', 'cages', 'timeline', 'tracking'].includes(activeTab);
+    let restoreTheme = null;
+    const fitOnePage = ['home', 'timeline', 'tracking'].includes(activeTab);
     let fixed = [];
     const beforePrint = () => {
       if (document.querySelector('.print-preview-scroll')) return; // label printing has its own layout
+      // Always print with the light theme, even when the app is in dark mode
+      const prevTheme = document.documentElement.getAttribute('data-theme');
+      if (prevTheme === 'dark') {
+        const prevBodyClass = document.body.className;
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.body.className = 'light';
+        restoreTheme = () => {
+          document.documentElement.setAttribute('data-theme', prevTheme);
+          document.body.className = prevBodyClass;
+        };
+      }
       // Freeze the on-screen size so the print layout matches what is displayed
       const w = Math.max(window.innerWidth, document.documentElement.scrollWidth);
       fixed = Array.from(document.querySelectorAll('[data-print-fix]')).map(el => {
@@ -106,10 +118,22 @@ export default function Home() {
       const h = document.documentElement.scrollHeight;
       let zoom = Math.min(1, PAGE_W / w);
       if (fitOnePage) zoom = Math.min(zoom, PAGE_H / h);
+      if (activeTab === 'cages') {
+        // Location: make the header + first room fit on page 1 (rooms are never split), and every room fit on one page
+        const rooms = Array.from(document.querySelectorAll('.print-room'));
+        if (rooms.length > 0) {
+          const first = rooms[0];
+          const firstBottom = first.getBoundingClientRect().bottom + window.scrollY;
+          const tallest = Math.max(...rooms.map(r => r.offsetHeight));
+          zoom = Math.min(zoom, PAGE_H / (firstBottom * 1.03), PAGE_H / (tallest * 1.03));
+        }
+      }
       document.body.style.zoom = String(zoom);
       if (stamp) stamp.style.zoom = String(1 / zoom); // keep the stamp at a constant size
     };
     const afterPrint = () => {
+      restoreTheme?.();
+      restoreTheme = null;
       document.body.style.zoom = '';
       const stampEl = document.querySelector('.print-stamp');
       if (stampEl) stampEl.style.zoom = '';

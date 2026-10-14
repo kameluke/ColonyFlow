@@ -19,6 +19,8 @@ All notable changes to **ColonyFlow** will be documented in this file.
    - **Pedigree** も A4 縦の1枚に収めて印刷します。
    - **印刷日時**（Printed: YYYY/MM/DD HH:MM）を、全ページの右下に自動で入れます。
    - Mice / Cages など長い表で、1ページ目が空白になる問題を修正しました（表が1ページ目から始まり、複数ページに続きます）。
+   - **Location** は Room（見出し＋ラックのグリッド）がページをまたがないようにし、1ページ目に最初の Room が収まるよう自動で縮小します。1枚に収める必要はなく、Room が複数ある場合は複数ページになります。
+   - 印刷時はページ全体の背景色を白にし、**ダークモードでもライトモードと同じ配色**で印刷します。
 
 ---
 
@@ -35,6 +37,8 @@ All notable changes to **ColonyFlow** will be documented in this file.
    - **Pedigree** is also fit onto a single A4 portrait page.
    - A **print timestamp** ("Printed: YYYY/MM/DD HH:MM") is automatically added at the bottom-right of every page.
    - Fixed a bug where long tables (Mice / Cages) left the first page blank; tables now start on page 1 and continue across pages.
+   - **Location** never splits a room (heading + rack grid) across pages and scales so the first room fits on page 1; multiple rooms flow onto additional pages.
+   - The page background colour is removed when printing, and **dark mode prints with the same light colours** as light mode.
 
 ---
 

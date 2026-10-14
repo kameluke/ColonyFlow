@@ -231,7 +231,7 @@ export default function CageGrid({ data, onSelect }) {
                 const getRowLabel = (rIdx) => roomInfo.rowFormat === 'A' ? String.fromCharCode(65 + rIdx) : rIdx + 1;
 
                 return (
-                    <div key={roomName}>
+                    <div key={roomName} className="print-room">
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem', borderBottom: '2px solid var(--accent-primary)', paddingBottom: '0.5rem', width: 'fit-content' }}>
                             <MapPin size={24} color="var(--accent-primary)" />
                             <h2 style={{ fontSize: '1.5rem', fontWeight: 800 }}>Room: {displayRoom} {displayRack && <span style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginLeft: '0.5rem' }}>/ Rack: {displayRack}</span>}</h2>

@@ -449,6 +449,10 @@ input[type="date"]:valid::-webkit-datetime-edit-text {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
+  /* No page background colour when printing */
+  html, body, .app-container, main {
+    background: #fff !important;
+  }
   html, body {
     height: auto !important;
     min-height: 0 !important;
@@ -488,4 +492,6 @@ input[type="date"]:valid::-webkit-datetime-edit-text {
   }
   footer { display: none !important; }
   tr { break-inside: avoid; }
+  /* Location: keep each room (heading + rack grid) on one page */
+  .print-room { break-inside: avoid; page-break-inside: avoid; }
 }
