@@ -990,7 +990,7 @@ export default function Home() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', opacity: 0.8 }}>
           <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontWeight: 800, color: 'var(--accent-primary)' }}>ColonyFlow</span>
-            <span>v2.03</span>
+            <span>v2.04</span>
             <span style={{ opacity: 0.5 }}>|</span>
             <span>© 2026</span>
           </div>
@@ -1711,6 +1711,16 @@ export default function Home() {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxHeight: '60vh', overflowY: 'auto', paddingRight: '0.8rem' }}>
               <section>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '0.8rem' }}>
+                    <span style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--accent-primary)' }}>v2.04</span>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>2026-10-14</span>
+                </div>
+                <ul style={{ fontSize: '0.9rem', lineHeight: '1.6', paddingLeft: '1.2rem', margin: 0 }}>
+                    <li><strong>Automatic Dam Status Update:</strong> When a litter is recorded in the Mating tab, the dam&apos;s status is automatically changed from Pregnant to Nursing.</li>
+                </ul>
+              </section>
+
+              <section style={{ opacity: 0.8 }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '0.8rem' }}>
                     <span style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--accent-primary)' }}>v2.03</span>
                     <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>2026-10-13</span>

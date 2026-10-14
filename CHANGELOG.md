@@ -4,6 +4,26 @@ All notable changes to **ColonyFlow** will be documented in this file.
 
 ---
 
+## [v2.04] - 2026-10-14
+
+### 🇯🇵 日本語
+
+#### 🚀 改善点
+1. **仔の登録時に母マウスのステータスを自動更新**
+   - Mating タブで litter（仔）を登録すると、母マウス（Dam）のステータスが `Pregnant` の場合に自動で `Nursing` へ変更されるようにしました。
+   - `Pregnant` 以外のステータスは変更しません。また、離乳済み（Weaned / Inactive）の litter を登録した場合も変更しません。
+
+---
+
+### 🇺🇸 English
+
+#### 🚀 Improvements
+1. **Automatic dam status update when pups are recorded:**
+   - When a litter is saved from the Mating tab, the dam's status is automatically changed from `Pregnant` to `Nursing`.
+   - Other statuses are left untouched, and saving a litter that is already Weaned / Inactive does not change the dam.
+
+---
+
 ## [v2.03] - 2026-10-13
 
 ### 🇯🇵 日本語

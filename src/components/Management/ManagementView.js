@@ -1142,6 +1142,20 @@ export default function ManagementView({ data, onUpdate, initialSelection, onCle
                 const savedItem = updatedLitters.find(l => l.id === item.id) || (editingItem?.id ? null : updatedLitters[updatedLitters.length - 1]);
                 const matingId = item.matingId || savedItem?.matingId;
 
+                // Dam: Pregnant -> Nursing when a litter (pups) is recorded
+                const litterStatus = (item.status || 'Nursing').toLowerCase();
+                if (matingId && litterStatus !== 'weaned' && litterStatus !== 'inactive') {
+                    const litterMating = updatedMatings.find(m => m.id === matingId);
+                    const litterDam = (litterRes.db?.mice || data.mice || []).find(m => m.id === litterMating?.damId);
+                    if (litterDam && (litterDam.status || litterDam.state || '').toLowerCase() === 'pregnant') {
+                        await fetch('/api/data', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ type: 'mice', item: { ...litterDam, status: 'Nursing' } })
+                        });
+                    }
+                }
+
                 // Sync with sibling litters for the same mating
                 if (matingId && item.status === 'Inactive') {
                     const siblingLitters = updatedLitters.filter(l => l.matingId === matingId);
