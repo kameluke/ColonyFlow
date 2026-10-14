@@ -188,7 +188,7 @@ export default function TimelineView({ data, onSelect }) {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', height: '80vh', background: 'var(--card-bg)', borderRadius: '24px', border: '2px solid var(--glass-border)', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
+        <div data-print-fix="true" style={{ display: 'flex', flexDirection: 'column', height: '80vh', background: 'var(--card-bg)', borderRadius: '24px', border: '2px solid var(--glass-border)', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}>
             {/* Toolbar */}
             <div style={{ padding: '0.75rem 1.5rem', borderBottom: '1px solid var(--glass-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--glass)', backdropFilter: 'blur(20px)', zIndex: 100 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
@@ -234,7 +234,7 @@ export default function TimelineView({ data, onSelect }) {
             </div>
 
             {/* Main Content Area */}
-            <div ref={timelineContainerRef} style={{ flex: 1, display: 'flex', alignItems: 'flex-start', overflow: 'auto', background: 'var(--background)', position: 'relative' }}>
+            <div ref={timelineContainerRef} className="print-keep-scroll" style={{ flex: 1, display: 'flex', alignItems: 'flex-start', overflow: 'auto', background: 'var(--background)', position: 'relative' }}>
                 {/* Labels Column (sticky left; scrolls vertically together with the timeline) */}
                 <div style={{ width: '250px', flexShrink: 0, position: 'sticky', left: 0, zIndex: 20, borderRight: '1px solid var(--glass-border)', background: 'var(--card-bg)' }}>
                     <div style={{ height: '40px', borderBottom: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', padding: '0 1rem', fontSize: '0.65rem', fontWeight: 900, color: 'var(--text-muted)', position: 'sticky', top: 0, zIndex: 30, background: 'var(--card-bg)' }}>

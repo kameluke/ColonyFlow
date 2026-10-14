@@ -77,6 +77,52 @@ export default function Home() {
   const [manageSubTab, setManageSubTab] = useState('mice');
   const [showManageMenu, setShowManageMenu] = useState(false);
 
+  // Print the current screen as displayed: scale it to fit the A4 landscape page
+  useEffect(() => {
+    // Dashboard prints on A4 portrait, other screens on A4 landscape (printable size at 96dpi, 8mm margins)
+    const portrait = activeTab === 'home';
+    const PAGE_W = portrait ? 730 : 1060;
+    const PAGE_H = portrait ? 1065 : 730;
+    let pageStyle = null;
+    const fitOnePage = activeTab === 'home' || activeTab === 'cages' || activeTab === 'timeline';
+    let fixed = [];
+    const beforePrint = () => {
+      if (document.querySelector('.print-preview-scroll')) return; // label printing has its own layout
+      // Freeze the on-screen size so the print layout matches what is displayed
+      const w = Math.max(window.innerWidth, document.documentElement.scrollWidth);
+      fixed = Array.from(document.querySelectorAll('[data-print-fix]')).map(el => {
+        const prev = { el, width: el.style.width, height: el.style.height };
+        el.style.width = el.offsetWidth + 'px';
+        el.style.height = el.offsetHeight + 'px';
+        return prev;
+      });
+      pageStyle = document.createElement('style');
+      pageStyle.textContent = `@page { size: A4 ${portrait ? 'portrait' : 'landscape'}; margin: 8mm; }`;
+      document.head.appendChild(pageStyle);
+      document.body.style.width = w + 'px';
+      if (window.innerWidth > 1024) document.body.setAttribute('data-print-wide', '');
+      const h = document.documentElement.scrollHeight;
+      let zoom = Math.min(1, PAGE_W / w);
+      if (fitOnePage) zoom = Math.min(zoom, PAGE_H / h);
+      document.body.style.zoom = String(zoom);
+    };
+    const afterPrint = () => {
+      document.body.style.zoom = '';
+      pageStyle?.remove();
+      pageStyle = null;
+      document.body.style.width = '';
+      document.body.removeAttribute('data-print-wide');
+      fixed.forEach(({ el, width, height }) => { el.style.width = width; el.style.height = height; });
+      fixed = [];
+    };
+    window.addEventListener('beforeprint', beforePrint);
+    window.addEventListener('afterprint', afterPrint);
+    return () => {
+      window.removeEventListener('beforeprint', beforePrint);
+      window.removeEventListener('afterprint', afterPrint);
+    };
+  }, [activeTab]);
+
   useEffect(() => {
     const handleWindowClick = () => {
       setShowManageMenu(false);
@@ -735,6 +781,15 @@ export default function Home() {
                   <Settings size={11} style={{ opacity: 0.7 }} />
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, lineHeight: 1 }}>Settings</span>
                 </button>
+
+                <button 
+                  onClick={() => window.print()}
+                  style={{ background: 'transparent', border: 'none', padding: '0.25rem 0.6rem', borderRadius: '5px', cursor: 'pointer', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '4px' }}
+                  title="Print / Save as PDF (current screen)"
+                >
+                  <Printer size={11} style={{ opacity: 0.7 }} />
+                  <span style={{ fontSize: '0.75rem', fontWeight: 700, lineHeight: 1 }}>Print</span>
+                </button>
               </div>
             </div>
 
@@ -990,7 +1045,7 @@ export default function Home() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', opacity: 0.8 }}>
           <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontWeight: 800, color: 'var(--accent-primary)' }}>ColonyFlow</span>
-            <span>v2.04</span>
+            <span>v2.05</span>
             <span style={{ opacity: 0.5 }}>|</span>
             <span>© 2026</span>
           </div>
@@ -1711,6 +1766,16 @@ export default function Home() {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxHeight: '60vh', overflowY: 'auto', paddingRight: '0.8rem' }}>
               <section>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '0.8rem' }}>
+                    <span style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--accent-primary)' }}>v2.05</span>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>2026-10-14</span>
+                </div>
+                <ul style={{ fontSize: '0.9rem', lineHeight: '1.6', paddingLeft: '1.2rem', margin: 0 }}>
+                    <li><strong>Print / Save as PDF:</strong> New Print button in the header (File menu / Cmd+P in the desktop app) prints the current screen with its on-screen design and layout. Dashboard fits one A4 portrait page, Location and Timeline fit one A4 landscape page, and Timeline prints the range currently displayed.</li>
+                </ul>
+              </section>
+
+              <section style={{ opacity: 0.8 }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '0.8rem' }}>
                     <span style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--accent-primary)' }}>v2.04</span>
                     <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>2026-10-14</span>

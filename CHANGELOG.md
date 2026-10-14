@@ -4,6 +4,34 @@ All notable changes to **ColonyFlow** will be documented in this file.
 
 ---
 
+## [v2.05] - 2026-10-14
+
+### 🇯🇵 日本語
+
+#### 🚀 新機能
+1. **画面の印刷 / PDF 保存（Print）**
+   - ヘッダーに **Print** ボタンを追加しました（デスクトップアプリでは File メニューの「Print / Save as PDF…」、Cmd+P でも実行できます）。
+   - 表示中の画面を、デザイン・レイアウトを保ったまま印刷、または PDF として保存できます。背景色・枠の色も印刷されます。
+   - **Dashboard** は A4 縦、**Location / Timeline** は A4 横の1枚に自動で縮小して収めます。その他の画面は幅に合わせて縮小します。
+   - **Timeline** は、画面で表示している範囲（スクロール位置）のまま印刷されます。
+   - Dashboard は画面と同じ2列レイアウト（カレンダー＋Active Tasks）で印刷されます。
+   - ヘッダー周りの灰色の枠など、画面専用の装飾（影・ぼかし）は印刷時に除去します。
+
+---
+
+### 🇺🇸 English
+
+#### 🚀 New Features
+1. **Print / Save as PDF of the current screen:**
+   - Added a **Print** button to the header (also available as File → "Print / Save as PDF…" and Cmd+P in the desktop app).
+   - Prints or saves the displayed screen as PDF while preserving its design and layout, including background and border colors.
+   - **Dashboard** is fit onto a single A4 portrait page; **Location / Timeline** onto a single A4 landscape page. Other screens are scaled to the page width.
+   - **Timeline** prints exactly the range currently shown on screen (scroll position preserved).
+   - Dashboard keeps the on-screen two-column layout (Calendar + Active Tasks).
+   - Screen-only effects (shadows, blur) are removed when printing to avoid grey boxes around the header.
+
+---
+
 ## [v2.04] - 2026-10-14
 
 ### 🇯🇵 日本語

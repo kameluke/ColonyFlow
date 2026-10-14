@@ -435,3 +435,46 @@ input[type="date"]:valid::-webkit-datetime-edit-text {
   background: var(--text-muted);
 }
 
+
+/* ===== Screen print (Print / Save as PDF) ===== */
+@page {
+  size: A4 landscape;
+  margin: 8mm;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  html, body {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+  /* Expand scroll regions so the whole content is printed, not just the visible part */
+  main, main *:not(.print-keep-scroll) {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  /* Timeline: keep the scroll container so the on-screen scroll position is printed */
+  .print-keep-scroll { overflow: hidden !important; }
+  main *::-webkit-scrollbar { display: none; }
+  main * {
+    backdrop-filter: none !important;
+  }
+  /* Keep the on-screen (wide) layout: the print viewport is narrower and would trigger the max-width media queries */
+  body[data-print-wide] .dashboard-grid { grid-template-columns: 2fr 1fr !important; }
+  /* Header: blur/shadow/semi-transparent layers print as grey boxes */
+  main header {
+    position: static !important;
+    background: transparent !important;
+  }
+  main header, main header * {
+    box-shadow: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+  }
+  footer { display: none !important; }
+  tr, .card { break-inside: avoid; }
+}
