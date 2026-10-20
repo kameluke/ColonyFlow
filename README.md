@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="desktop-app/build/icon.png" alt="ColonyFlow" width="160">
+</p>
+
 # ColonyFlow - マウスコロニー管理システム
 
 ColonyFlow（コロニーフロー）は、研究現場におけるマウス飼育・交配・系統管理を効率化するための Apple 風モダン UI を採用した管理システムです。
