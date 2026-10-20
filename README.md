@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/banner.svg" alt="ColonyFlow - Mouse Colony Management" width="100%">
+  <img src="docs/header.svg" alt="ColonyFlow - Mouse Colony Management" width="600">
 </p>
 
 # ColonyFlow - マウスコロニー管理システム
