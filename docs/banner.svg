@@ -20,5 +20,5 @@
         </g>
       </g>
   <text x="420" y="140" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="96" font-weight="800" fill="#0071e3" letter-spacing="-1">ColonyFlow</text>
-  <text x="424" y="200" font-family="-apple-system, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="400" fill="#86868b">Tracking <tspan font-weight="700" fill="#0071e3">mice</tspan>, <tspan font-weight="700" fill="#0071e3">cages</tspan>, <tspan font-weight="700" fill="#0071e3">matings</tspan> &amp; pedigree</text>
+  <text x="424" y="200" font-family="-apple-system, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="400" fill="#86868b"><tspan font-weight="700" fill="#0071e3">Mice</tspan>, <tspan font-weight="700" fill="#0071e3">Cages</tspan>, <tspan font-weight="700" fill="#0071e3">Matings</tspan> &amp; Pedigree</text>
 </svg>
