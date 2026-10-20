@@ -170,6 +170,7 @@ export default function Calendar({ data, onSelect }) {
             const key = `${targetDate.getFullYear()}-${targetDate.getMonth()}-${d}`;
             const dayEvents = events[key] || [];
             const isToday = new Date().toDateString() === new Date(targetDate.getFullYear(), targetDate.getMonth(), d).toDateString();
+            const isSunday = new Date(targetDate.getFullYear(), targetDate.getMonth(), d).getDay() === 0;
 
             days.push(
                 <div key={d} style={{
@@ -184,7 +185,7 @@ export default function Calendar({ data, onSelect }) {
                     gap: '0.2rem',
                     overflow: 'hidden'
                 }}>
-                    <div style={{ fontSize: '0.75rem', fontWeight: isToday ? 800 : 600, color: isToday ? 'var(--accent-primary)' : 'var(--text-muted)' }}>{d}</div>
+                    <div style={{ fontSize: '0.75rem', fontWeight: isToday ? 800 : 600, color: isToday ? 'var(--accent-primary)' : isSunday ? '#ff3b30' : 'var(--text-muted)' }}>{d}</div>
                     {dayEvents.map((ev, idx) => {
                         const isDone = ev.isCompleted;
                         return (

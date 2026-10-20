@@ -1801,7 +1801,7 @@ export default function Home() {
                     <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>2026-10-20</span>
                 </div>
                 <ul style={{ fontSize: '0.9rem', lineHeight: '1.6', paddingLeft: '1.2rem', margin: 0 }}>
-                    <li><strong>Calendar:</strong> The &quot;Sun&quot; weekday header in the Dashboard calendar is now shown in red.</li>
+                    <li><strong>Calendar:</strong> The &quot;Sun&quot; weekday header and Sunday dates in the Dashboard calendar are now shown in red.</li>
                 </ul>
               </section>
 
