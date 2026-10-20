@@ -10,6 +10,7 @@ All notable changes to **ColonyFlow** will be documented in this file.
 
 #### 🎨 改善
 1. **カレンダー:** Dashboard のカレンダーの曜日見出し「Sun」と、日曜日の日付の数字を赤色で表示するようにしました。
+2. **日本の祝日:** Dashboard のカレンダーで、日本の祝日を赤色＋祝日名で表示します。Settings の「Show Japanese holidays」で ON/OFF できます（初期値は ON）。
 
 ---
 
@@ -17,6 +18,7 @@ All notable changes to **ColonyFlow** will be documented in this file.
 
 #### 🎨 Improvements
 1. **Calendar:** The "Sun" weekday header and Sunday dates in the Dashboard calendar are now shown in red.
+2. **Japanese holidays:** Japanese national holidays are shown in red with their names in the Dashboard calendar. Toggle via "Show Japanese holidays" in Settings (default ON).
 
 ---
 

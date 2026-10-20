@@ -1288,6 +1288,20 @@ export default function Home() {
                 </div>
 
                 <div className="form-group">
+                  <label style={{ fontWeight: 800, fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.5rem', display: 'block' }}>Calendar</label>
+                  <div style={{ background: 'var(--background)', padding: '1rem', borderRadius: '12px', border: '1px solid var(--glass-border)' }}>
+                    <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.85rem', cursor: 'pointer' }}>
+                      <span>Show Japanese holidays (日本の祝日を赤で表示)</span>
+                      <input
+                        type="checkbox"
+                        checked={data.settings?.showJpHolidays !== false}
+                        onChange={(e) => handleUpdateSettings({ showJpHolidays: e.target.checked })}
+                      />
+                    </label>
+                  </div>
+                </div>
+
+                <div className="form-group">
                   <label style={{ fontWeight: 800, fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <Baby size={14} /> Breeding Parameters
                   </label>
@@ -1802,6 +1816,7 @@ export default function Home() {
                 </div>
                 <ul style={{ fontSize: '0.9rem', lineHeight: '1.6', paddingLeft: '1.2rem', margin: 0 }}>
                     <li><strong>Calendar:</strong> The &quot;Sun&quot; weekday header and Sunday dates in the Dashboard calendar are now shown in red.</li>
+                    <li><strong>Japanese Holidays:</strong> Japanese national holidays are shown in red with their names in the Dashboard calendar. Can be turned ON/OFF in Settings (default ON).</li>
                 </ul>
               </section>
 

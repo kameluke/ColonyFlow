@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import holiday_jp from '@holiday-jp/holiday_jp';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
 
 export default function Calendar({ data, onSelect }) {
@@ -13,6 +14,7 @@ export default function Calendar({ data, onSelect }) {
 
     const nextMonthObj = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1);
 
+    const showHolidays = data?.settings?.showJpHolidays !== false;
     const events = {};
     const completedIds = data?.completedTasks || [];
 
@@ -170,7 +172,9 @@ export default function Calendar({ data, onSelect }) {
             const key = `${targetDate.getFullYear()}-${targetDate.getMonth()}-${d}`;
             const dayEvents = events[key] || [];
             const isToday = new Date().toDateString() === new Date(targetDate.getFullYear(), targetDate.getMonth(), d).toDateString();
-            const isSunday = new Date(targetDate.getFullYear(), targetDate.getMonth(), d).getDay() === 0;
+            const cellDate = new Date(targetDate.getFullYear(), targetDate.getMonth(), d);
+            const holiday = showHolidays ? holiday_jp.between(cellDate, cellDate)[0] : null;
+            const isSunday = cellDate.getDay() === 0 || !!holiday;
 
             days.push(
                 <div key={d} style={{
@@ -185,7 +189,7 @@ export default function Calendar({ data, onSelect }) {
                     gap: '0.2rem',
                     overflow: 'hidden'
                 }}>
-                    <div style={{ fontSize: '0.75rem', fontWeight: isToday ? 800 : 600, color: isToday ? 'var(--accent-primary)' : isSunday ? '#ff3b30' : 'var(--text-muted)' }}>{d}</div>
+                    <div style={{ fontSize: '0.75rem', fontWeight: isToday ? 800 : 600, color: isToday ? 'var(--accent-primary)' : isSunday ? '#ff3b30' : 'var(--text-muted)' }} title={holiday ? `${holiday.name} (${holiday.name_en})` : undefined}>{d}{holiday && <span style={{ marginLeft: '4px', fontWeight: 600, fontSize: '0.6rem' }}>{holiday.name}</span>}</div>
                     {dayEvents.map((ev, idx) => {
                         const isDone = ev.isCompleted;
                         return (
