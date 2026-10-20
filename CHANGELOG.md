@@ -4,6 +4,22 @@ All notable changes to **ColonyFlow** will be documented in this file.
 
 ---
 
+## [v2.06] - 2026-10-20
+
+### 🇯🇵 日本語
+
+#### 🎨 改善
+1. **カレンダー:** Dashboard のカレンダーの曜日見出し「Sun」を赤色で表示するようにしました。
+
+---
+
+### 🇺🇸 English
+
+#### 🎨 Improvements
+1. **Calendar:** The "Sun" weekday header in the Dashboard calendar is now shown in red.
+
+---
+
 ## [v2.05] - 2026-10-14
 
 ### 🇯🇵 日本語

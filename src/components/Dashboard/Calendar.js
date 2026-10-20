@@ -222,7 +222,7 @@ export default function Calendar({ data, onSelect }) {
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: '0.4rem' }}>
                     {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
-                        <div key={d} style={{ textAlign: 'center', fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)' }}>{d}</div>
+                        <div key={d} style={{ textAlign: 'center', fontSize: '0.7rem', fontWeight: 700, color: d === 'Sun' ? '#ff3b30' : 'var(--text-muted)' }}>{d}</div>
                     ))}
                     {days}
                 </div>

@@ -3,7 +3,7 @@
   "productName": "ColonyFlow",
   "description": "Mouse Colony Management Desktop Application",
   "author": "ColonyFlow Team",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "private": true,
   "main": "electron/main.js",
   "scripts": {
