@@ -5,7 +5,7 @@
     </filter>
   </defs>
   <rect width="1200" height="260" fill="#f2f2f5" />
-  <g transform="translate(150, 63) scale(8)" filter="url(#shadow)">
+  <g transform="translate(150, 70) scale(11)" filter="url(#shadow)">
 <g>
             <g>
                 <path fill="#d0d0d0" d="M14.89,11.68c-.23-.01-.46-.07-.72-.07l-5.9.02-4.68.24c-.29.01-.56.1-.8.16-.08-.09-.09-.23-.08-.34.03-.39-.35-.86.18-1.37.5-.48,1.1.07,1.63-.48.07-.47-.37-.81-.8-.92-.89-.22-3.22-.91-3.35-1.85-.04-.29.18-.39.38-.57l2.57-2.23c.46-.4.89-.75,1.49-.96.08-.12.11-.38.11-.53.01-1.42,1.23-2.46,2.59-2.26s2.24,1.6,1.79,2.95c-.04.13-.03.27-.08.36-.1.12-.06.24,0,.38.31-.2.67-.11,1.05-.07,2.64.23,4.33,1.6,4.96,4.2.11.47.21.89.1,1.39-.12.53-.17,1.06-.31,1.55-.04.13-.1.26-.1.4Z" />
@@ -19,6 +19,6 @@
             </g>
         </g>
       </g>
-  <text x="420" y="140" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="96" font-weight="800" fill="#0071e3" letter-spacing="-1">ColonyFlow</text>
-  <text x="424" y="200" font-family="-apple-system, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="400" fill="#86868b">Mouse Colony Management</text>
+  <text x="470" y="140" font-family="-apple-system, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="96" font-weight="800" fill="#0071e3" letter-spacing="-1">ColonyFlow</text>
+  <text x="474" y="200" font-style="italic" font-family="-apple-system, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="36" font-weight="400" fill="#86868b">Mouse Colony Management</text>
 </svg>
