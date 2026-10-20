@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="desktop-app/build/icon.png" alt="ColonyFlow" width="160">
+  <img src="docs/banner.svg" alt="ColonyFlow - Mouse Colony Management" width="100%">
 </p>
 
 # ColonyFlow - マウスコロニー管理システム
