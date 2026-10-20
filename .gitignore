@@ -39,3 +39,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ColonyFlow: build outputs, installers, local data
+node_modules/
+dist/
+.next/
+*.dmg
+*.blockmap
+/backup/
+/Import-ColonyFlow/
+/ipad-app/
+/iPad_Install_Guide.md
+/scripts/
+/src/app/favicon.ico.bak
+desktop-app/test_dmg_staging/

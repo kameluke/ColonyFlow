@@ -1,0 +1,78 @@
+{
+  "name": "colonyflow",
+  "productName": "ColonyFlow",
+  "description": "Mouse Colony Management Desktop Application",
+  "author": "ColonyFlow Team",
+  "version": "2.0.5",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "electron:start": "electron .",
+    "app:build": "next build && electron-builder --mac --dir",
+    "app:dist": "next build && electron-builder --mac"
+  },
+  "dependencies": {
+    "framer-motion": "^12.34.3",
+    "lucide-react": "^0.575.0",
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "electron": "^44.3.0",
+    "electron-builder": "^26.15.3",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "build": {
+    "appId": "com.colonyflow.app",
+    "productName": "ColonyFlow",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "mac": {
+      "icon": "build/icon.icns",
+      "category": "public.app-category.medical",
+      "target": [
+        "dmg",
+        "dir"
+      ]
+    },
+    "dmg": {
+      "title": "ColonyFlow Installer",
+      "contents": [
+        {
+          "x": 130,
+          "y": 200
+        },
+        {
+          "x": 410,
+          "y": 200,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "files": [
+      "**/*",
+      ".next/**",
+      "!node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!.git/**",
+      "!backup/**",
+      "!dist/**"
+    ],
+    "asar": false
+  }
+}

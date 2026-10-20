@@ -1,0 +1,497 @@
+:root {
+  /* Apple Light Theme */
+  --apple-blue: #0071e3;
+  --apple-blue-hover: #0077ed;
+  --background: #f5f5f7;
+  --foreground: #1d1d1f;
+  --text-main: #1d1d1f;
+  --text-muted: #86868b;
+  --card-bg: rgba(255, 255, 255, 0.88);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --accent-primary: #0071e3;
+  --accent-secondary: #0077ed;
+  --accent-rgb: 0, 113, 227;
+  --success: #34c759;
+  --warning: #ff9500;
+  --danger: #ff3b30;
+  --glass: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --apple-control-bg: rgba(0, 0, 0, 0.04);
+  --apple-control-active: #ffffff;
+  --apple-control-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 1px rgba(0, 0, 0, 0.04);
+  --input-bg: #ffffff;
+  --input-border: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme='dark'] {
+  /* Apple Dark Theme */
+  --apple-blue: #2997ff;
+  --apple-blue-hover: #47a3ff;
+  --background: #000000;
+  --foreground: #f5f5f7;
+  --text-main: #f5f5f7;
+  --text-muted: #86868b;
+  --card-bg: rgba(28, 28, 30, 0.88);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --accent-primary: #2997ff;
+  --accent-secondary: #47a3ff;
+  --accent-rgb: 41, 151, 255;
+  --success: #30d158;
+  --warning: #ff9f0a;
+  --danger: #ff453a;
+  --glass: rgba(28, 28, 30, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --apple-control-bg: rgba(255, 255, 255, 0.08);
+  --apple-control-active: rgba(255, 255, 255, 0.18);
+  --apple-control-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --input-bg: rgba(255, 255, 255, 0.06);
+  --input-border: rgba(255, 255, 255, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  letter-spacing: -0.01em;
+}
+
+svg {
+  stroke-width: 2.2px;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 5000;
+  background: var(--background);
+  padding: 1.5rem 0 1rem 0;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+}
+
+.tabs-container {
+  display: flex;
+  gap: 0.5rem;
+  background: var(--glass);
+  padding: 0.4rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+}
+
+.tab-button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.tab-button.active {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--text-muted);
+  letter-spacing: -0.01em;
+}
+
+.form-control {
+  width: 100%;
+  height: 34px;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--foreground);
+  font-size: 0.82rem;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.form-control:focus {
+  border-color: var(--apple-blue);
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.18);
+}
+
+.btn {
+  height: 32px;
+  padding: 0 0.85rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  line-height: 1;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--accent-primary);
+  color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background: var(--apple-blue-hover);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.btn-ghost {
+  background: var(--apple-control-bg);
+  color: var(--text-main);
+  border: 1px solid var(--card-border);
+}
+
+.btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='dark'] .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Apple Pastel Pill Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.55rem;
+  border-radius: 9999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.badge-stock, .badge-success, .badge-weaned {
+  background: rgba(52, 199, 89, 0.12);
+  color: #248a3d;
+}
+[data-theme='dark'] .badge-stock, [data-theme='dark'] .badge-success, [data-theme='dark'] .badge-weaned {
+  background: rgba(48, 209, 88, 0.18);
+  color: #30d158;
+}
+
+.badge-mating, .badge-active {
+  background: rgba(255, 45, 85, 0.12);
+  color: #d61842;
+}
+[data-theme='dark'] .badge-mating, [data-theme='dark'] .badge-active {
+  background: rgba(255, 55, 95, 0.18);
+  color: #ff375f;
+}
+
+.badge-pregnant {
+  background: rgba(218, 59, 137, 0.12);
+  color: #b81a71;
+}
+[data-theme='dark'] .badge-pregnant {
+  background: rgba(244, 114, 182, 0.18);
+  color: #f472b6;
+}
+
+.badge-nursing {
+  background: rgba(255, 149, 0, 0.12);
+  color: #c97500;
+}
+[data-theme='dark'] .badge-nursing {
+  background: rgba(255, 159, 10, 0.18);
+  color: #ff9f0a;
+}
+
+.badge-weaning {
+  background: rgba(175, 82, 222, 0.12);
+  color: #893cb5;
+}
+[data-theme='dark'] .badge-weaning {
+  background: rgba(191, 90, 242, 0.18);
+  color: #bf5af2;
+}
+
+.badge-experiment, .badge-euthanasia, .badge-tissue-collection {
+  background: rgba(142, 142, 147, 0.12);
+  color: #636366;
+}
+[data-theme='dark'] .badge-experiment, [data-theme='dark'] .badge-euthanasia, [data-theme='dark'] .badge-tissue-collection {
+  background: rgba(142, 142, 147, 0.2);
+  color: #aeaeb2;
+}
+
+.badge-dead, .badge-inactive {
+  background: rgba(142, 142, 147, 0.12);
+  color: #8e8e93;
+}
+[data-theme='dark'] .badge-dead, [data-theme='dark'] .badge-inactive {
+  background: rgba(142, 142, 147, 0.18);
+  color: #8e8e93;
+}
+
+/* Apple macOS Sheet Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  width: 90%;
+  max-width: 520px;
+  padding: 1.8rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+}
+
+.mac-traffic-close {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ff5f57;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.15s ease;
+  color: rgba(0, 0, 0, 0.6);
+}
+.mac-traffic-close:hover {
+  background: #ff3b30;
+  transform: scale(1.08);
+}
+
+footer {
+  flex-shrink: 0;
+  margin-top: auto;
+  background: var(--background);
+  padding: 1rem 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Date Input Placeholder Cleanup */
+input[type="date"]::-webkit-datetime-edit-year-field,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-text {
+  color: rgba(148, 163, 184, 0.05); /* Extra thin */
+}
+
+input[type="date"]:focus::-webkit-datetime-edit-year-field,
+input[type="date"]:focus::-webkit-datetime-edit-month-field,
+input[type="date"]:focus::-webkit-datetime-edit-day-field,
+input[type="date"]:focus::-webkit-datetime-edit-text {
+  color: var(--foreground);
+}
+
+/* Chrome/Safari native date placeholder styling when value exists */
+input[type="date"]:not([value=""]) {
+  color: var(--foreground);
+}
+
+input[type="date"]:valid::-webkit-datetime-edit-year-field,
+input[type="date"]:valid::-webkit-datetime-edit-month-field,
+input[type="date"]:valid::-webkit-datetime-edit-day-field,
+input[type="date"]:valid::-webkit-datetime-edit-text {
+  color: var(--foreground);
+}
+
+/* Date Empty Placeholder Cleanup */
+.date-empty::-webkit-datetime-edit {
+  color: transparent !important;
+}
+
+.date-empty:focus::-webkit-datetime-edit {
+  color: var(--foreground) !important;
+}
+
+/* Scrollable table container */
+.table-scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: var(--card-border) transparent;
+}
+.table-scroll-container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.table-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.table-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 4px;
+}
+.table-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+
+/* ===== Screen print (Print / Save as PDF) ===== */
+.print-stamp { display: none; }
+
+@page {
+  size: A4 landscape;
+  margin: 8mm 8mm 12mm;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  /* No page background colour when printing */
+  html, body, .app-container, main {
+    background: #fff !important;
+  }
+  html, body {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+  /* Expand scroll regions so the whole content is printed, not just the visible part */
+  main, main *:not(.print-keep-scroll) {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  /* Timeline: keep the scroll container so the on-screen scroll position is printed */
+  .print-keep-scroll { overflow: hidden !important; }
+  main *::-webkit-scrollbar { display: none; }
+  main * {
+    backdrop-filter: none !important;
+  }
+  /* Keep the on-screen (wide) layout: the print viewport is narrower and would trigger the max-width media queries */
+  body[data-print-wide] .dashboard-grid { grid-template-columns: 2fr 1fr !important; }
+  /* Header: blur/shadow/semi-transparent layers print as grey boxes */
+  main header {
+    position: static !important;
+    background: transparent !important;
+  }
+  main header, main header * {
+    box-shadow: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+  }
+  /* Fixed elements repeat on every printed page */
+  .print-stamp {
+    display: block;
+    position: fixed !important;
+    right: 0;
+    bottom: 0;
+    font-size: 10px;
+    color: #6e6e73;
+  }
+  footer { display: none !important; }
+  tr { break-inside: avoid; }
+  /* Location: keep each room (heading + rack grid) on one page */
+  .print-room { break-inside: avoid; page-break-inside: avoid; }
+}
