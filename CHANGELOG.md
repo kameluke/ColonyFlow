@@ -4,6 +4,26 @@ All notable changes to **ColonyFlow** will be documented in this file.
 
 ---
 
+## [v2.07] - 2026-10-24
+
+### 🇯🇵 日本語
+
+#### 🔒 セキュリティ / 更新
+1. **ライブラリの更新:** Next.js（16.1.6 → 16.4.3）と Electron（44.3.0 → 45.0.0）を更新し、`npm audit fix` で依存パッケージの脆弱性を修正しました。デスクトップアプリに同梱される Node.js / Chromium も新しくなります。
+2. 開発用 Node.js を v24.22.1 に更新しました。
+3. 既知の未修正: `xlsx`（Excel 読み込み）は修正版がなく、別ライブラリへの置き換えを検討中です。
+
+---
+
+### 🇺🇸 English
+
+#### 🔒 Security / Updates
+1. **Dependency updates:** Updated Next.js (16.1.6 → 16.4.3) and Electron (44.3.0 → 45.0.0), and fixed dependency vulnerabilities with `npm audit fix`. The Node.js / Chromium bundled in the desktop app are updated as well.
+2. Development Node.js updated to v24.22.1.
+3. Known open issue: `xlsx` (Excel import) has no fixed release; replacing it is under consideration.
+
+---
+
 ## [v2.06] - 2026-10-20
 
 ### 🇯🇵 日本語
